@@ -106,6 +106,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        python: [
+          { version: '3.6', abi: 'cp36-cp36m' },
+          { version: '3.7', abi: 'cp37-cp37m' },
+          { version: '3.8', abi: 'cp38-cp38' },
+          { version: '3.9', abi: 'cp39-cp39' },
+        ]
         target: [aarch64, armv7, s390x, ppc64le, ppc64]
     steps:
     - uses: actions/checkout@v2
@@ -115,7 +121,7 @@ jobs:
     - name: Build Wheels
       uses: messense/maturin-action@v1
       env:
-        PYO3_CROSS_LIB_DIR: /opt/hostedtoolcache/Python/3.9.7/x64/lib
+        PYO3_CROSS_LIB_DIR: /opt/python/${{ matrix.python.abi }}/lib
       with:
         target: ${{ matrix.target }}
         manylinux: auto
