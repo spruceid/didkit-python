@@ -1,0 +1,56 @@
+[package]
+name = "didkit"
+version = "0.3.0"
+authors = ["Spruce Systems, Inc."]
+edition = "2018"
+description = "Library for Verifiable Credentials and Decentralized Identifiers."
+license = "Apache-2.0"
+license-file = "LICENSE"
+homepage = "https://spruceid.dev/docs/didkit/"
+repository = "https://github.com/spruceid/didkit/"
+documentation = "https://docs.rs/didkit/"
+keywords = ["ssi", "did", "python"]
+readme = "README.md"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+didkit_core = { version = "0.3", default-features = false, features = ["secp256k1", "p256"], package = "didkit" }
+# TODO Explicitely settign ssi's features due to lack of "no ring" feature on DIDKit
+ssi = { version = "0.3", default-features = false, features = ["ed25519-dalek", "sha2", "rsa", "rand"] }
+serde_json = "1.0"
+
+pyo3 = { version = "0.14", features = ["extension-module"] }
+pyo3-asyncio = { version = "0.14", features = ["tokio-runtime"] }
+tokio = "1.9"
+
+[build-dependencies]
+pyo3-build-config = "0.14"
+
+[package.metadata.maturin]
+classifier = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Rust",
+    "Topic :: Security",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+[package.metadata.maturin.project-url]
+"Source Code" = "https://github.com/spruceid/didkit-python/"
+"Bug Tracker" = "https://github.com/spruceid/didkit-python/issues"
+"Documentation" = "https://github.com/spruceid/didkit-python/"
+
+[target.x86_64-apple-darwin]
+rustflags = [
+  "-C", "link-arg=-undefined",
+  "-C", "link-arg=dynamic_lookup",
+]
