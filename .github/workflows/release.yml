@@ -4,7 +4,8 @@ on:
   push:
     tags:
       - v*
-    branch: feat/pyo3
+    branches:
+      - feat/pyo3
 
 jobs:
   macos:
