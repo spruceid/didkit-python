@@ -20,6 +20,8 @@ You can install it globally with:
 $ pip install -U didkit
 ```
 
+> `asyncio` is required, meaning you will need Python 3.7 or above.
+
 ## Build from Source
 
 ```bash
@@ -28,6 +30,11 @@ $ maturin build
 > You can install `maturin` with `pip install maturin`.
 
 Now the `wheel` should be in the [target directory](../../target/wheel).
+
+### Custom Builds
+
+To enable or disable certain features of DIDKit, or use different cryptography
+backends, you will need edit the `Cargo.toml`.
 
 ## Development
 
@@ -38,6 +45,14 @@ static analysis and IDE support. (This will be automated in the future.)
 ## Test
 
 Go to [the test directory](./pydidkit_tests/).
+
+## Migration
+
+### 0.2 to 0.3
+Functions have kept the same signatures, but some have become asynchronous. You
+will need to start using
+[`asyncio`](https://docs.python.org/3/library/asyncio.html) if it is not already
+the case.
 
 ## Maturity Disclaimer
 
