@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/didkit.svg)](https://badge.fury.io/py/didkit)
+
 Check out the DIDKit documentation [here](https://spruceid.dev/docs/didkit/).
 
 # DIDKit Python
@@ -9,11 +11,14 @@ suitability across different platforms including embedded systems. DIDKit
 embeds the [`ssi`](https://github.com/spruceid/ssi) library, which contains the
 core functionality.
 
-![DIDKit core components](https://spruceid.dev/assets/images/didkit-core-components-7abba2778ffe8dde24997f305e706bd8.png)
-
 ## Installation and Usage
 
-> TBD PyPI link
+DIDKit is available [on PyPI](https://pypi.org/project/didkit/).
+
+You can install it globally with:
+```bash
+$ pip install -U didkit
+```
 
 ## Build from Source
 
