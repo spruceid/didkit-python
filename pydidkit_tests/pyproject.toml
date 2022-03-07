@@ -6,10 +6,13 @@ authors = ["Simon Bihel <simon.bihel@spruceid.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-pytest = "^6.2.5"
-pytest-asyncio = "^0.15.1"
-didkit = {path = "../target/wheels/didkit-0.3.0-cp39-cp39-linux_x86_64.whl", develop = true}
+pytest = "^7.0.1"
+pytest-asyncio = "^0.18.2"
+didkit = {path = "../target/wheels/didkit-0.3.0-cp310-cp310-linux_x86_64.whl"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_mode = "strict"

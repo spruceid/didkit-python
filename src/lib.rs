@@ -8,7 +8,6 @@ use pyo3::{
     prelude::*,
 };
 use serde_json;
-use std::convert::From;
 
 pub static VERSION: &str = env!("CARGO_PKG_VERSION");
 

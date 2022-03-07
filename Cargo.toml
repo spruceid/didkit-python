@@ -17,17 +17,15 @@ publish = false
 crate-type = ["cdylib"]
 
 [dependencies]
-didkit_core = { version = "0.3", default-features = false, features = ["secp256k1", "p256"], package = "didkit" }
-# TODO Explicitely settign ssi's features due to lack of "no ring" feature on DIDKit
-ssi = { version = "0.3", default-features = false, features = ["ed25519-dalek", "sha2", "rsa", "rand"] }
+didkit_core = { version = "0.4", default-features = false, features = ["secp256k1", "p256", "no-ring"], package = "didkit" }
 serde_json = "1.0"
 
-pyo3 = { version = "0.14", features = ["extension-module"] }
-pyo3-asyncio = { version = "0.14", features = ["tokio-runtime"] }
-tokio = "1.9"
+pyo3 = { version = "0.15", features = ["extension-module"] }
+pyo3-asyncio = { version = "0.15", features = ["tokio-runtime"] }
+tokio = "1.17"
 
 [build-dependencies]
-pyo3-build-config = "0.14"
+pyo3-build-config = "0.16"
 
 [package.metadata.maturin]
 classifier = [

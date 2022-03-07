@@ -1,4 +1,5 @@
 import pytest
+import pytest_asyncio
 import didkit
 import json
 from uuid import uuid4
@@ -45,7 +46,7 @@ class TestCredentialMethods:
     }
     options = {}
 
-    @pytest.fixture
+    @pytest_asyncio.fixture
     async def setup(self):
         vm = await didkit.key_to_verification_method("key", JWK)
         self.options = {
@@ -93,7 +94,7 @@ class TestPresentationMethods:
     }
     options = {}
 
-    @pytest.fixture
+    @pytest_asyncio.fixture
     async def setup(self):
         self.vm = await didkit.key_to_verification_method("key", JWK)
         self.options = {
@@ -124,7 +125,7 @@ class TestAuthMethods:
     did = didkit.key_to_did("key", JWK)
     options = {}
 
-    @pytest.fixture
+    @pytest_asyncio.fixture
     async def setup(self):
         vm = await didkit.key_to_verification_method("key", JWK)
         self.options = {
