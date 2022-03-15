@@ -22,6 +22,8 @@ $ pip install -U didkit
 
 > `asyncio` is required, meaning you will need Python 3.7 or above.
 
+On macOS arm64 (M1), Python 3.9 or above is needed for didkit 0.3.0 or later.
+
 ## Build from Source
 
 ```bash
