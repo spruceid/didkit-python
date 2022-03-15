@@ -29,6 +29,7 @@ jobs:
       #     python-version: 3.9
       #     architecture: x64
       - name: Install built wheel
+        if: matrix.target == 'x64'
         run: |
           pip install didkit --no-index --find-links dist --force-reinstall
           python -c "import didkit"
@@ -55,7 +56,7 @@ jobs:
       #     python-version: 3.9
       #     architecture: ${{ matrix.target }}
       - name: Install built wheel
-        # if: matrix.target == 'x64'
+        if: matrix.target == 'x64'
         run: |
           pip install didkit --no-index --find-links dist --force-reinstall
           python -c "import didkit"
