@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - v*
-    branches:
-      - 'fix/release-versions'
   pull_request:
     branches:
       - 'main'
@@ -24,10 +22,6 @@ jobs:
         with:
           target: ${{ matrix.target }}
           args: --release --out dist --no-sdist
-      # - uses: actions/setup-python@v2
-      #   with:
-      #     python-version: 3.9
-      #     architecture: x64
       - name: Install built wheel
         if: matrix.target == 'x64'
         run: |
@@ -51,10 +45,6 @@ jobs:
         with:
           target: ${{ matrix.target }}
           args: --release --out dist --no-sdist
-      # - uses: actions/setup-python@v2
-      #   with:
-      #     python-version: 3.9
-      #     architecture: ${{ matrix.target }}
       - name: Install built wheel
         if: matrix.target == 'x64'
         run: |
@@ -81,10 +71,6 @@ jobs:
         target: ${{ matrix.target }}
         manylinux: auto
         args: --release --out dist
-    # - uses: actions/setup-python@v2
-    #   with:
-    #     python-version: 3.9
-    #     architecture: x64
     - name: Install built wheel
       if: matrix.target == 'x86_64'
       run: |
