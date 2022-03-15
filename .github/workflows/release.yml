@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - v*
-    branches:
-      - feat/pyo3
 
 jobs:
   macos:
@@ -151,17 +149,20 @@ jobs:
   # TODO Add pypy
 
   release:
+    strategy:
+      matrix:
+        python: [3.7, 3.8, 3.9, 3.10]
     name: Release
     runs-on: ubuntu-latest
     if: "startsWith(github.ref, 'refs/tags/')"
-    needs: [ macos, linux, linux-cross ] # windows,
+    needs: [ macos, linux, linux-cross, windows]
     steps:
       - uses: actions/download-artifact@v2
         with:
           name: wheels
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python }}
       - name: Publish to PyPi
         env:
           TWINE_USERNAME: __token__
