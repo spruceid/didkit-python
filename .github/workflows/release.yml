@@ -95,7 +95,7 @@ jobs:
           name: wheels
       - uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python }}
+          python-version: 3.9
       - name: Publish to PyPi
         env:
           TWINE_USERNAME: __token__
