@@ -1,4 +1,4 @@
-name: CI/CD
+name: CD
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
         uses: messense/maturin-action@v1
         with:
           target: ${{ matrix.target }}
-          args: --release --out dist --no-sdist
+          args: --release --out dist
       - name: Install built wheel
         if: matrix.target == 'x64'
         run: |
@@ -44,7 +44,7 @@ jobs:
         uses: messense/maturin-action@v1
         with:
           target: ${{ matrix.target }}
-          args: --release --out dist --no-sdist
+          args: --release --out dist
       - name: Install built wheel
         if: matrix.target == 'x64'
         run: |
