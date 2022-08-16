@@ -1,0 +1,171 @@
+[[package]]
+name = "asgiref"
+version = "3.5.2"
+description = "ASGI specs, helper code, and adapters"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+tests = ["pytest", "pytest-asyncio", "mypy (>=0.800)"]
+
+[[package]]
+name = "backports.zoneinfo"
+version = "0.2.1"
+description = "Backport of the standard library zoneinfo module"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+tzdata = ["tzdata"]
+
+[[package]]
+name = "didkit"
+version = "0.3.1"
+description = "Library for Verifiable Credentials and Decentralized Identifiers."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "django"
+version = "4.1"
+description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+asgiref = ">=3.5.2,<4"
+"backports.zoneinfo" = {version = "*", markers = "python_version < \"3.9\""}
+sqlparse = ">=0.2.2"
+tzdata = {version = "*", markers = "sys_platform == \"win32\""}
+
+[package.extras]
+argon2 = ["argon2-cffi (>=19.1.0)"]
+bcrypt = ["bcrypt"]
+
+[[package]]
+name = "django-qr-code"
+version = "3.1.1"
+description = "An application that provides tools for displaying QR codes on your Django site."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+django = ">=3.2"
+pydantic = "*"
+pytz = "*"
+segno = ">=1.5"
+
+[[package]]
+name = "pydantic"
+version = "1.9.2"
+description = "Data validation and settings management using python type hints"
+category = "main"
+optional = false
+python-versions = ">=3.6.1"
+
+[package.dependencies]
+typing-extensions = ">=3.7.4.3"
+
+[package.extras]
+dotenv = ["python-dotenv (>=0.10.4)"]
+email = ["email-validator (>=1.0.3)"]
+
+[[package]]
+name = "pytz"
+version = "2022.2.1"
+description = "World timezone definitions, modern and historical"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "segno"
+version = "1.5.2"
+description = "QR Code and Micro QR Code generator for Python 2 and Python 3"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
+
+[[package]]
+name = "sqlparse"
+version = "0.4.2"
+description = "A non-validating SQL parser."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
+name = "typing-extensions"
+version = "4.3.0"
+description = "Backported and Experimental Type Hints for Python 3.7+"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "tzdata"
+version = "2022.2"
+description = "Provider of IANA time zone data"
+category = "main"
+optional = false
+python-versions = ">=2"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "7744e13914cd8557ee32424842d8cc4cc6081588bf61240c02e92c2dd3af6552"
+
+[metadata.files]
+asgiref = []
+"backports.zoneinfo" = []
+didkit = [
+    {file = "didkit-0.3.1-cp310-cp310-macosx_10_7_x86_64.whl", hash = "sha256:8d849efd41291c8731b0c1ddb91c8e1c95d1490d80d66db12ed7f883ae77d722"},
+    {file = "didkit-0.3.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:d4f007d89154d824dd6f5dc44d5865983676d70e5ed156c7ea71cc9457538451"},
+    {file = "didkit-0.3.1-cp310-cp310-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:a84d34b9be662be771cbe329debf1d7e37715cc69f83655d9bd11796022f4aa0"},
+    {file = "didkit-0.3.1-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:4130377ebc3c4d9e96cc59b78e47c901206345464dd877ebddd82835f2ada778"},
+    {file = "didkit-0.3.1-cp310-none-win32.whl", hash = "sha256:fdd4279fe7768501d00d0cd98825d392ea671ab6b86c7e56c355ad65dbba4d2a"},
+    {file = "didkit-0.3.1-cp310-none-win_amd64.whl", hash = "sha256:5a80ee8994cbfc447fbcad4fe971d9b31294a5f8a904746e33eb3a56c85d01ea"},
+    {file = "didkit-0.3.1-cp36-cp36m-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:2bf6b1b51796db43b9da1abfb592428080f9e341c5a1b3d1fffd68cc03fbb42d"},
+    {file = "didkit-0.3.1-cp36-cp36m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:29edbf8b6bc124a5ed9d17d358405c7e11cc61a67b6325239267ea9f5d290c8f"},
+    {file = "didkit-0.3.1-cp37-cp37m-macosx_10_7_x86_64.whl", hash = "sha256:c807cfd6eca0fd19c3a8f34f8a0014e3edc9ab32e8930c5044d3e4ef4f6d55c2"},
+    {file = "didkit-0.3.1-cp37-cp37m-macosx_11_0_arm64.whl", hash = "sha256:9ba768400f1e511cb85b9c1c08aeba50118e31c0a62db6fa3066728df868946f"},
+    {file = "didkit-0.3.1-cp37-cp37m-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:23a3ca579b9ade262f08ced066cc5772ff58b95d39df9d9f8b4e1f8e41e46767"},
+    {file = "didkit-0.3.1-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:2cf5c556fbe2cc1c6de7c878ae7412eef984553d5b26ff5c6c2d25fad35c47d1"},
+    {file = "didkit-0.3.1-cp37-none-win32.whl", hash = "sha256:d3f5500596ba7fefa9a6e00680dfeef9f090cc8b567bf34aae5b9e335a4cc349"},
+    {file = "didkit-0.3.1-cp37-none-win_amd64.whl", hash = "sha256:0fc02710e39bd042eb6cd314f28b80e110e048187bba707272af929b06dd4256"},
+    {file = "didkit-0.3.1-cp38-cp38-macosx_10_7_x86_64.whl", hash = "sha256:48e541ef71311637ad543324acaffe99a1356c3a43ddf0cb18b376582d7d37ed"},
+    {file = "didkit-0.3.1-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:92a79e3a52fe5f3f2042c252b0b9ca16afe009636dc21d4e628fcec42422fa0f"},
+    {file = "didkit-0.3.1-cp38-cp38-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:2a24b998db19f0eb756bd52de82c406b9b11e06523c7ff3eccecf6b8cf331d20"},
+    {file = "didkit-0.3.1-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:507caee78dcd892227a56baa309d5d764dcab53aaca9b4af5c1f7c62f5dca459"},
+    {file = "didkit-0.3.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:69007a00bc05f2b73d7011078a29be2489cb7b6278b2f6c3d0e8c409c998a14b"},
+    {file = "didkit-0.3.1-cp38-cp38-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:e50233a80116625bbcb0961198d0337725e44d30280b6f9b9c8f26a5a0c66e45"},
+    {file = "didkit-0.3.1-cp38-cp38-manylinux_2_17_ppc64.manylinux2014_ppc64.whl", hash = "sha256:f9aa32fac56b8247870868e79bc26e08995af280cc73c5e81f4cff5a9c8aaf01"},
+    {file = "didkit-0.3.1-cp38-cp38-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:368fa1ed0faec05872612d0aa43cd1fa4c197302fcf623498fc86b6df94a52b9"},
+    {file = "didkit-0.3.1-cp38-cp38-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:f7baed9201a72aff4a2ec648d7bdc6517960e39a8036b683eb4ebbd0be9b8e86"},
+    {file = "didkit-0.3.1-cp38-none-win32.whl", hash = "sha256:59b593e8012a46f2456de5979ee6b67e9e003b35c20a9321e00f0ac086130b13"},
+    {file = "didkit-0.3.1-cp38-none-win_amd64.whl", hash = "sha256:d4db8f84b05acd21b8c2db60dfd87b57da02c0ba8c2c6d7a0d5a7eb77e67008f"},
+    {file = "didkit-0.3.1-cp39-cp39-macosx_10_7_x86_64.whl", hash = "sha256:8e76163b07ada5d8e9f92ba499e4c1a49e5317fec1766350d19487e8dd963f0c"},
+    {file = "didkit-0.3.1-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:fded92270c38ed0edac7aa0a1e32f544fd42d99d331ec31ea0114a194e60be87"},
+    {file = "didkit-0.3.1-cp39-cp39-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:0b44935657da085b63647bf892c4caac8c983ba3d57464881b48e08fda8b02d4"},
+    {file = "didkit-0.3.1-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:b4a2679d4c81c51630bdf71a00c0cdda149962877d716a7eeb9b9424fc99ca26"},
+    {file = "didkit-0.3.1-cp39-none-win32.whl", hash = "sha256:0bf19be1d5af81af0da08bc18dca515b33b19b724d3e2a544abb7f3cdedcbc21"},
+    {file = "didkit-0.3.1-cp39-none-win_amd64.whl", hash = "sha256:30e84bb44e4f06f96b92cb9746be4d302f86dab3417d8ca2be773785957e4036"},
+    {file = "didkit-0.3.1-pp37-pypy37_pp73-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:02d94a038d227304e9ed2060d35de6b56e096a3b6c720fcd8d95c82f53eca20e"},
+    {file = "didkit-0.3.1-pp37-pypy37_pp73-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:47023bfe6b585b41fe978861ea5d5c8f51ed7453ce692a251d4413325e07c348"},
+]
+django = []
+django-qr-code = []
+pydantic = []
+pytz = []
+segno = []
+sqlparse = [
+    {file = "sqlparse-0.4.2-py3-none-any.whl", hash = "sha256:48719e356bb8b42991bdbb1e8b83223757b93789c00910a616a071910ca4a64d"},
+    {file = "sqlparse-0.4.2.tar.gz", hash = "sha256:0c00730c74263a94e5a9919ade150dfc3b19c574389985446148402998287dae"},
+]
+typing-extensions = []
+tzdata = []
