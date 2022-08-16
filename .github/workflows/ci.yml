@@ -1,0 +1,16 @@
+name: CI
+
+on: push
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Wheel
+        uses: messense/maturin-action@v1
+      - name: Run Tests
+        working-directory: pydidkit_tests
+        run: |
+          poetry install
+          poetry run pytest
