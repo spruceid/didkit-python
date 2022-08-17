@@ -30,7 +30,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "didkit"
-version = "0.3.0"
+version = "0.3.1"
 description = "Library for Verifiable Credentials and Decentralized Identifiers."
 category = "main"
 optional = false
@@ -38,7 +38,7 @@ python-versions = "*"
 
 [package.source]
 type = "file"
-url = "../target/wheels/didkit-0.3.0-cp310-cp310-linux_x86_64.whl"
+url = "../target/wheels/didkit-0.3.1-cp310-cp310-linux_x86_64.whl"
 
 [[package]]
 name = "iniconfig"
@@ -152,7 +152,7 @@ colorama = [
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
 ]
 didkit = [
-    {file = "didkit-0.3.0-cp310-cp310-linux_x86_64.whl", hash = "sha256:42abde80964a98bfe35d99b4a12c8889ea2a4747eb8bedbf533158300b797d95"},
+    {file = "didkit-0.3.1-cp310-cp310-linux_x86_64.whl", hash = "sha256:45b18c22524b3a6e35bc2ba88d9b1c23a4546996b312e2b5d57a7a54acc3c3d7"},
 ]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
