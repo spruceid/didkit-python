@@ -21,12 +21,7 @@ jobs:
         uses: messense/maturin-action@v1
         with:
           target: ${{ matrix.target }}
-          args: --release --out dist
-      - name: Install built wheel
-        if: matrix.target == 'x64'
-        run: |
-          pip install didkit --no-index --find-links dist --force-reinstall
-          python -c "import didkit"
+          args: --release -o dist --find-interpreter
       - name: Upload wheels
         uses: actions/upload-artifact@v2
         with:
@@ -44,12 +39,7 @@ jobs:
         uses: messense/maturin-action@v1
         with:
           target: ${{ matrix.target }}
-          args: --release --out dist
-      - name: Install built wheel
-        if: matrix.target == 'x64'
-        run: |
-          pip install didkit --no-index --find-links dist --force-reinstall
-          python -c "import didkit"
+          args: --release -o dist --find-interpreter
       - name: Upload wheels
         uses: actions/upload-artifact@v2
         with:
@@ -70,12 +60,7 @@ jobs:
       with:
         target: ${{ matrix.target }}
         manylinux: auto
-        args: --release --out dist
-    - name: Install built wheel
-      if: matrix.target == 'x86_64'
-      run: |
-        pip install didkit --no-index --find-links dist --force-reinstall
-        python -c "import didkit"
+        args: --release --sdist -o dist --find-interpreter
     - name: Upload wheels
       uses: actions/upload-artifact@v2
       with:
