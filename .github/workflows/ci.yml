@@ -1,0 +1,24 @@
+name: CI
+
+on: push
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+      - name: Build Wheel
+        uses: messense/maturin-action@v1
+        with:
+          manylinux: off
+          args: --find-interpreter
+      - uses: abatilo/actions-poetry@v2.1.6
+      - name: Run Tests
+        working-directory: pydidkit_tests
+        run: |
+          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+          poetry install
+          poetry run pytest
