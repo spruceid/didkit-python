@@ -8,7 +8,7 @@ authors = ["Simon Bihel <simon.bihel@spruceid.com>"]
 python = "^3.9"
 pytest = "^7.0.1"
 pytest-asyncio = "^0.18.2"
-didkit = {path = "../target/wheels/didkit-0.3.1-cp310-cp310-linux_x86_64.whl"}
+didkit = {path = "../target/wheels/didkit-0.3.1-cp38-cp38-manylinux_2_31_x86_64.whl"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
