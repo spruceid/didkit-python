@@ -60,7 +60,7 @@ jobs:
       with:
         target: ${{ matrix.target }}
         manylinux: auto
-        args: --release dist --find-interpreter
+        args: --release -o dist --find-interpreter
     - name: Upload wheels
       uses: actions/upload-artifact@v2
       with:
