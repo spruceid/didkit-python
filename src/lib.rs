@@ -1,6 +1,6 @@
 use didkit_core::{
     dereference, get_verification_method, Error, JWTOrLDPOptions, ProofFormat, Source,
-    VerifiableCredential, VerifiablePresentation, DID_METHODS, JWK, URI,
+    VerifiableCredential, VerifiablePresentation, DID_METHODS, JWK, URI, ContextLoader
 };
 use pyo3::{
     create_exception,
@@ -81,6 +81,7 @@ fn didkit(py: Python, m: &PyModule) -> PyResult<()> {
         let key: JWK =
             serde_json::from_str(&key).map_err(|e| PyValueError::new_err(e.to_string()))?;
         let resolver = DID_METHODS.to_resolver();
+        let mut context_loader = ContextLoader::default();
 
         pyo3_asyncio::tokio::future_into_py(py, async move {
             let options: JWTOrLDPOptions = serde_json::from_str(&proof_options)
@@ -96,7 +97,12 @@ fn didkit(py: Python, m: &PyModule) -> PyResult<()> {
                 }
                 ProofFormat::LDP => {
                     let proof = credential
-                        .generate_proof(&key, &options.ldp_options, resolver)
+                        .generate_proof(
+                            &key,
+                            &options.ldp_options,
+                            resolver,
+                            &mut context_loader,
+                        )
                         .await
                         .map_err(|e| DIDKitException::new_err(e.to_string()))?;
                     credential.add_proof(proof);
@@ -119,6 +125,7 @@ fn didkit(py: Python, m: &PyModule) -> PyResult<()> {
         proof_options: String,
     ) -> PyResult<&PyAny> {
         let resolver = DID_METHODS.to_resolver();
+        let mut context_loader = ContextLoader::default();
 
         pyo3_asyncio::tokio::future_into_py(py, async move {
             let options: JWTOrLDPOptions = serde_json::from_str(&proof_options)
@@ -130,13 +137,15 @@ fn didkit(py: Python, m: &PyModule) -> PyResult<()> {
                         &credential,
                         Some(options.ldp_options),
                         resolver,
+                        &mut context_loader,
                     )
                     .await
                 }
                 ProofFormat::LDP => {
                     let vc = VerifiableCredential::from_json_unsigned(&credential)
                         .map_err(|e| PyValueError::new_err(e.to_string()))?;
-                    vc.verify(Some(options.ldp_options), resolver).await
+                    vc.verify(Some(options.ldp_options), resolver, &mut context_loader)
+                    .await
                 }
                 _ => Err(Error::UnknownProofFormat(proof_format.to_string()))
                     .map_err(|e| DIDKitException::new_err(e.to_string()))?,
@@ -160,6 +169,7 @@ fn didkit(py: Python, m: &PyModule) -> PyResult<()> {
         let key: JWK =
             serde_json::from_str(&key).map_err(|e| PyValueError::new_err(e.to_string()))?;
         let resolver = DID_METHODS.to_resolver();
+        let mut context_loader = ContextLoader::default();
 
         pyo3_asyncio::tokio::future_into_py(py, async move {
             let options: JWTOrLDPOptions = serde_json::from_str(&proof_options)
@@ -175,7 +185,12 @@ fn didkit(py: Python, m: &PyModule) -> PyResult<()> {
                 }
                 ProofFormat::LDP => {
                     let proof = presentation
-                        .generate_proof(&key, &options.ldp_options, resolver)
+                        .generate_proof(
+                            &key,
+                            &options.ldp_options,
+                            resolver,
+                            &mut context_loader,
+                        )
                         .await
                         .map_err(|e| DIDKitException::new_err(e.to_string()))?;
                     presentation.add_proof(proof);
@@ -198,6 +213,7 @@ fn didkit(py: Python, m: &PyModule) -> PyResult<()> {
         proof_options: String,
     ) -> PyResult<&PyAny> {
         let resolver = DID_METHODS.to_resolver();
+        let mut context_loader = ContextLoader::default();
 
         pyo3_asyncio::tokio::future_into_py(py, async move {
             let options: JWTOrLDPOptions = serde_json::from_str(&proof_options)
@@ -209,13 +225,15 @@ fn didkit(py: Python, m: &PyModule) -> PyResult<()> {
                         &presentation,
                         Some(options.ldp_options),
                         resolver,
+                        &mut context_loader,
                     )
                     .await
                 }
                 ProofFormat::LDP => {
                     let vc = VerifiablePresentation::from_json_unsigned(&presentation)
                         .map_err(|e| PyValueError::new_err(e.to_string()))?;
-                    vc.verify(Some(options.ldp_options), resolver).await
+                    vc.verify(Some(options.ldp_options), resolver, &mut context_loader)
+                    .await
                 }
                 _ => Err(Error::UnknownProofFormat(proof_format.to_string()))
                     .map_err(|e| DIDKitException::new_err(e.to_string()))?,
@@ -284,6 +302,7 @@ fn didkit(py: Python, m: &PyModule) -> PyResult<()> {
         let key: JWK =
             serde_json::from_str(&key).map_err(|e| PyValueError::new_err(e.to_string()))?;
         let resolver = DID_METHODS.to_resolver();
+        let mut context_loader = ContextLoader::default();
 
         pyo3_asyncio::tokio::future_into_py(py, async move {
             let options: JWTOrLDPOptions =
@@ -296,7 +315,7 @@ fn didkit(py: Python, m: &PyModule) -> PyResult<()> {
                     .map_err(|e| DIDKitException::new_err(e.to_string()))?,
                 ProofFormat::LDP => {
                     let proof = presentation
-                        .generate_proof(&key, &options.ldp_options, resolver)
+                        .generate_proof(&key, &options.ldp_options, resolver, &mut context_loader)
                         .await
                         .map_err(|e| DIDKitException::new_err(e.to_string()))?;
                     presentation.add_proof(proof);
