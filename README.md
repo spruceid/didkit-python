@@ -39,12 +39,17 @@ backends, you will need edit the `Cargo.toml`.
 ## Development
 
 When adding a function or changing the signature of an existing one, make sure
-to reflect the changes in [the stub file](./pydidkit.pyi). This is important for
-static analysis and IDE support. (This will be automated in the future.)
+to reflect the changes in [the stub file](./didkit/pydidkit.pyi). This is
+important for static analysis and IDE support. (This will be automated in the
+future.)
 
 ## Test
 
-Go to [the test directory](./pydidkit_tests/).
+```bash
+poetry install
+poetry run maturin develop
+poetry run pytest
+```
 
 ## Migration
 

@@ -1,0 +1,32 @@
+[project]
+name = "didkit"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Security",
+]
+
+# [project.urls]
+# homepage = "https://github.com/spruceid/didkit-python"
+# documentation = "https://github.com/spruceid/didkit-python"
+# repository = "https://github.com/spruceid/didkit-python"
+
+[tool.poetry]
+name = "didkit"
+version = "0.1.0"
+description = "Library for Verifiable Credentials and Decentralized Identifiers."
+authors = [ "Spruce Systems, Inc." ]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+maturin = "^0.14.15"
+pytest = "^7.2.2"
+pytest-asyncio = "^0.20.3"
+
+[build-system]
+requires = ["maturin>=0.14,<0.15"]
+build-backend = "maturin"

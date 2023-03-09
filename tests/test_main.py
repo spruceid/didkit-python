@@ -73,6 +73,58 @@ class TestCredentialMethods:
 
         assert not result["errors"]
 
+    @pytest.mark.asyncio
+    async def test_issues_credential_plugfest(self):
+        credential = {
+            "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://purl.imsglobal.org/spec/ob/v3p0/context.json",
+            ],
+            "id": "urn:uuid:0",
+            "type": [
+                "VerifiableCredential",
+                "OpenBadgeCredential",
+            ],
+            "name": "..",
+            "issuer": {
+                "type": ["Profile"],
+                "id": self.did,
+                "name": "..",
+                "url": "https://example.com/",
+                "image": {
+                  "id": "https://example.com/image",
+                  "type": "Image"
+                }
+            },
+            "issuanceDate": "2020-08-19T21:41:50Z",
+            "credentialSubject": {
+                "type": ["AchievementSubject"],
+                "id": self.did,
+                "achievement": {
+                    "id": "urn:uuid:0",
+                    "type": ["Achievement"],
+                    "name": "..",
+                    "description": "..",
+                    "criteria": {
+                        "narrative": ".."
+                    },
+                    "image": {
+                        "id": "https://example.com/image",
+                        "type": "Image"
+                    }
+                }
+            }
+        }
+        credential = await didkit.issue_credential(
+            json.dumps(credential), json.dumps(self.options), JWK
+        )
+        result = json.loads(
+            await didkit.verify_credential(
+                credential, '{"proofPurpose":"assertionMethod"}'
+            )
+        )
+        assert not result["errors"]
+
 
 class TestPresentationMethods:
     did = didkit.key_to_did("key", JWK)
