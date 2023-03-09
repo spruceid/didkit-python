@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [x86_64, i686, aarch64, armv7, ppc64]
+        target: [x86_64, i686, aarch64, armv7]
     steps:
     - uses: actions/checkout@v2
     - name: Build Wheels
