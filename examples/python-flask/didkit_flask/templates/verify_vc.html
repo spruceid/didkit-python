@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>DIDKit Flask</title>
+  </head>
+  <body class="flex flex-col items-center justify-center h-screen w-screen">
+    <p>Paste your issued VC here to validate it!</p>
+    <p>Tip: Try modifing some lines of your VC to see how DIDKit reacts!</p>
+    <form class="flex items-center justify-center mb-4" method="post" action="/verify_vc">
+      <input type="text" placeholder="Enter your credential:" class="h-24 p-8 border border-blue-900 rounded mr-4" name="input_credential" />
+      <button
+        class="h-12 p-2 border border-blue-900 rounded"
+        type="submit"
+      >
+        Verify Credential
+      </button>
+    </form>
+  </body>
+</html>

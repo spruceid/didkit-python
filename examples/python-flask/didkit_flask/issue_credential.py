@@ -6,6 +6,15 @@ from didkit import issue_credential, key_to_did, key_to_verification_method
 
 
 async def req_issue_vc(request):
+    """Issues a Verifiable VC using SpruceID DIDKit
+    Args:
+        request (flask.Request): Flask API request containing
+        None (Issue via server) or
+        QRcode url
+
+    Returns:
+        Dict: Generated VC from DIDKit issue_credential
+    """
     with open("key.jwk", "r") as f:
         key = f.readline()
     f.close()

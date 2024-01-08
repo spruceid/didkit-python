@@ -3,28 +3,40 @@
   <head>
     <meta charset="utf-8">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <title>DIDKit Django</title>
+    <title>DIDKit Flask</title>
   </head>
   <body class="flex flex-col items-center justify-center h-screen w-screen">
-      <form class="flex items-center justify-center mb-4" method="post" action="/credential">
-        <input type="text" placeholder="Enter your DID:" class="h-12 p-4 border border-blue-900 rounded mr-4" name="subject_id" />
-        <button
-          class="h-12 p-2 border border-blue-900 rounded"
-          type="submit"
-        >
-          Get credential
-        </button>
-      </form>
-      <p>or scan the QRCode bellow with your wallet. i.e: Credible</p>
-      <div class="my-8"><img src={{ qrcode(url) }} class="w-32 h-32"></div>
-      <p>or</p>
-      <a href="/credential">
-        <button
-          class="h-12 p-2 border mt-6 border-blue-900 rounded"
-          type="submit"
-        >
-          Get server issued credential
-        </button>
-      </a>
+    <form class="flex items-center justify-center mb-4" method="get" action="/issue_vc">
+      <button
+        class="h-12 p-2 border border-blue-900 rounded"
+        type="submit"
+      >
+        Issue Verifiable Credential
+      </button>
+    </form>
+    <form class="flex items-center justify-center mb-4" method="get" action="/verify_vc">
+      <button
+        class="h-12 p-2 border border-blue-900 rounded"
+        type="submit"
+      >
+        Verify Verifiable Credential
+      </button>
+    </form>
+    <form class="flex items-center justify-center mb-4" method="get" action="/issue_vp">
+      <button
+        class="h-12 p-2 border border-blue-900 rounded"
+        type="submit"
+      >
+        Issue Verifiable Presentation
+      </button>
+    </form>
+    <form class="flex items-center justify-center mb-4" method="get" action="/verify_vp">
+      <button
+        class="h-12 p-2 border border-blue-900 rounded"
+        type="submit"
+      >
+        Verify Verifiable Presentation
+      </button>
+    </form>
   </body>
 </html>

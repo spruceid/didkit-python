@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>DIDKit Flask</title>
+  </head>
+  <body class="flex flex-col items-center justify-center h-screen w-screen">
+      <p>Scan the QRCode bellow with your wallet. i.e: Credible</p>
+      <div class="my-8"><img src={{ qrcode(url) }} class="w-32 h-32"></div>
+      <p>or</p>
+      <a href="/credential">
+        <button
+          class="h-12 p-2 border mt-6 border-blue-900 rounded"
+          type="submit"
+        >
+          Get server issued credential
+        </button>
+      </a>
+  </body>
+</html>

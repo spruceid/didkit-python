@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>DIDKit Flask</title>
+  </head>
+  <body class="flex flex-col items-center justify-center h-screen w-screen">
+    <p>Now that we have a verified VC, let`s issue a verifiable VP!</p>
+    <p>Tip: refer to the oficial SpruceID docs <a href=https://www.spruceid.dev/didkit/didkit-examples/core-functions-cli#create-a-verifiable-presentation-that-embeds-the-verifiable-credential style="color:blue;">here</a> for detailed info</p>
+      <form class="flex items-center justify-center mb-4" method="post" action="/issue_vp">
+        <input type="text" placeholder="Enter your Verifiable Presentation:" class="h-24 p-16 border border-blue-900 rounded mr-4" name="input_vp" />
+        <input type="text" placeholder="Enter your Verifiable Credential:" class="h-24 p-16 border border-blue-900 rounded mr-4" name="input_vc" />
+        <input type="text" placeholder="Enter your Holder value:" class="h-24 p-16 border border-blue-900 rounded mr-4" name="holder" />
+        <button
+          class="h-12 p-2 border border-blue-900 rounded"
+          type="submit"
+        >
+          Verify Presentation
+        </button>
+      </form>
+  </body>
+</html>
