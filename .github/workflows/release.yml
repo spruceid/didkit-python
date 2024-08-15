@@ -55,8 +55,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build Wheels
       uses: messense/maturin-action@v1
-      env:
-        PYO3_CROSS_LIB_DIR: /opt/python/cp38-cp38/lib
       with:
         target: ${{ matrix.target }}
         manylinux: auto
