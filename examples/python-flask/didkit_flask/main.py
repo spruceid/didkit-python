@@ -8,6 +8,9 @@ from flask import Flask, jsonify, render_template, request
 from flask_qrcode import QRcode
 
 from didkit_flask.issue_credential import req_issue_vc
+from didkit_flask.verify_credential import verify_vc_credential
+from didkit_flask.issue_presentation import issue_vp_credential
+from didkit_flask.verify_presentation import verify_vp_credential
 
 app = Flask(__name__)
 qrcode = QRcode(app)
@@ -37,7 +40,9 @@ def index():
 
 @app.route("/credential", methods=["GET", "POST"])
 async def credential():
-    credential = json.dumps(await req_issue_vc(request), indent=2, sort_keys=True)
+    credential = json.dumps(await req_issue_vc(request),
+                            indent=2,
+                            sort_keys=True)
 
     return render_template("credential.html", credential=credential)
 
@@ -46,9 +51,42 @@ async def credential():
 async def wallet():
     credential = await req_issue_vc(request)
     if request.method == "GET":
-        return jsonify({"type": "CredentialOffer", "credentialPreview": credential})
+        return jsonify({"type": "CredentialOffer",
+                        "credentialPreview": credential})
     elif request.method == "POST":
         return jsonify(credential)
+
+
+@app.route("/issue_vc", methods=["GET"])
+async def issue_vc():
+    return render_template("issue_vc.html")
+
+
+@app.route("/verify_vc", methods=["GET", "POST"])
+async def verify_vc():
+    if request.method == "GET":
+        return render_template("verify_vc.html")
+    elif request.method == "POST":
+        validation = await verify_vc_credential(request)
+        return jsonify(validation)
+
+
+@app.route("/issue_vp", methods=["GET", "POST"])
+async def issue_vp():
+    if request.method == "GET":
+        return render_template("issue_vp.html")
+    elif request.method == "POST":
+        presentation = await issue_vp_credential(request)
+        return jsonify(presentation)
+
+
+@app.route("/verify_vp", methods=["GET", "POST"])
+async def verify_vp():
+    if request.method == "GET":
+        return render_template("verify_vp.html")
+    elif request.method == "POST":
+        presentation = await verify_vp_credential(request)
+        return jsonify(presentation)
 
 
 def main():
