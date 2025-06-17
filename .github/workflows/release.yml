@@ -14,55 +14,73 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
+        python-version: ["3.10", "3.11", "3.12"]
         target: [x64, aarch64]
     steps:
-      - uses: actions/checkout@v2
-      - name: Build wheels
-        uses: messense/maturin-action@v1
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
         with:
+          python-version: ${{ matrix.python-version }}
+      - name: Build Wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          command: build
           target: ${{ matrix.target }}
           args: --release -o dist --find-interpreter
       - name: Upload wheels
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
-          name: wheels
+          name: macos-wheels-${{ matrix.python-version }}-${{matrix.target}}
           path: dist
 
   windows:
     runs-on: windows-latest
     strategy:
       matrix:
+        python-version: ["3.10", "3.11", "3.12"]
         target: [x64, x86]
     steps:
-      - uses: actions/checkout@v2
-      - name: Build wheels
-        uses: messense/maturin-action@v1
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
         with:
+          python-version: ${{ matrix.python-version }}
+      - name: Build Wheels
+        uses: PyO3/maturin-action@v1
+        with:
+          command: build
           target: ${{ matrix.target }}
           args: --release -o dist --find-interpreter
       - name: Upload wheels
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
-          name: wheels
+          name: windows-wheels-${{ matrix.python-version }}-${{matrix.target}}
           path: dist
 
   linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        python-version: ["3.10", "3.11", "3.12"]
         target: [x86_64, i686, aarch64, armv7]
     steps:
-    - uses: actions/checkout@v2
-    - name: Build Wheels
-      uses: messense/maturin-action@v1
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
       with:
+        python-version: ${{ matrix.python-version }}
+    - name: Build Wheels
+      uses: PyO3/maturin-action@v1
+      with:
+        command: build
         target: ${{ matrix.target }}
         manylinux: auto
         args: --release -o dist --find-interpreter
     - name: Upload wheels
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
-        name: wheels
+        name: linux-wheels-${{ matrix.python-version }}-${{matrix.target}}
         path: dist
 
   # TODO Add pypy
@@ -76,7 +94,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: wheels
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.9
       - name: Publish to PyPi

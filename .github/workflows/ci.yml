@@ -9,17 +9,23 @@ on:
 jobs:
   CI:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: ${{ matrix.python-version }}
       - name: Build Wheel
         uses: messense/maturin-action@v1
         with:
           manylinux: off
           args: --find-interpreter
-      - uses: abatilo/actions-poetry@v2.3.0
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v4
       - name: Run Tests
         run: |
           poetry install
